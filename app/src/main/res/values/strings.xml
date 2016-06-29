@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CameraScanDemo</string>
+    <string name="buttontext1">调用系统相机拍照并保存缩略图片</string>
+    <string name="buttontext2">调用系统相机拍照并保存原图片</string>
+    <string name="buttontext3">自定义相机实现倒计时拍照及按钮拍照</string>
+    <string name="buttontext4">扫码之后进行拍照并以条码内容为文件名</string>
+    <string name="buttontext5">拍照后扫描并以条码内容为文件名</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+</resources>
