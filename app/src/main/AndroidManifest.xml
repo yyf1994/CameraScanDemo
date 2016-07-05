@@ -32,7 +32,9 @@
         <activity android:name=".scanphoto.ScanPhotoActivity" />
         <activity android:name=".scanphoto.CameraActivity" />
         <activity android:name=".systemcameras.SystemCameraForOriginalImage" />
-        <activity android:name=".countdownpictures.CountdownPictures"></activity>
+        <activity android:name=".countdownpictures.CountdownPictures" />
+        <activity android:name=".customcamera.CustomCameraActivity"></activity>
+        <activity android:name=".customcamera.CustomCameraActivity1"></activity>
     </application>
 
 </manifest>

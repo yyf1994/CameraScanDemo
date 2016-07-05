@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.yyf.camerascandemo.countdownpictures.CountdownPictures;
+import com.yyf.camerascandemo.customcamera.CustomCameraActivity;
 import com.yyf.camerascandemo.photoscan.PhotoScanActivity;
 import com.yyf.camerascandemo.scanphoto.ScanPhotoActivity;
 import com.yyf.camerascandemo.systemcameras.SystemCameraForOriginalImage;
@@ -14,7 +15,7 @@ import com.yyf.camerascandemo.systemcameras.SystemCameraForThumbnails;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button button1,button2,button3,button4,button5;
+    private Button button1,button2,button3,button4,button5,button6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
     }
 
     private void initView() {
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
+        button6 = (Button) findViewById(R.id.button6);
     }
 
     @Override
@@ -63,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button5:
                  intent = new Intent(MainActivity.this, PhotoScanActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button6:
+                intent = new Intent(MainActivity.this, CustomCameraActivity.class);
                 startActivity(intent);
                 break;
         }

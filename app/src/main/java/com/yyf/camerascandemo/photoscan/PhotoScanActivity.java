@@ -14,7 +14,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.OrientationEventListener;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -81,6 +83,17 @@ public class PhotoScanActivity extends AppCompatActivity implements View.OnClick
 
     Bitmap bitmap;
 
+    int rotation;
+
+    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
+
+    static {
+        ORIENTATIONS.append(Surface.ROTATION_0, 90);
+        ORIENTATIONS.append(Surface.ROTATION_90, 0);
+        ORIENTATIONS.append(Surface.ROTATION_180, 270);
+        ORIENTATIONS.append(Surface.ROTATION_270, 180);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +101,8 @@ public class PhotoScanActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        // 获取设备方向
+        rotation = getWindowManager().getDefaultDisplay().getRotation();
         // 显示界面
         setContentView(R.layout.activity_photo_scan);
         surfaceView = (SurfaceView) this.findViewById(R.id.surfaceView);
@@ -393,11 +408,6 @@ public class PhotoScanActivity extends AppCompatActivity implements View.OnClick
             double height = bitmap1.getHeight();
             int i = getBitmapSize(bitmap1);
             Log.d("bitmap","size:"+i+"width:"+width+"height:"+height);
-
-//                if(i>1024){
-////                    bitmap1 = getBitmapFromUrl(filepath, 480.0, 800.0);
-//                }
-
             int jiaodu = getBitmapDegree(filepath);
             Log.d("jiaodu",jiaodu+"");
             bitmap = rotateBitmapByDegree(bitmap1,90);
@@ -500,10 +510,11 @@ public class PhotoScanActivity extends AppCompatActivity implements View.OnClick
 
     // 控制图像的正确显示方向
     public  void setDispaly(Camera.Parameters parameters, Camera camera) {
+
         if (Integer.parseInt(Build.VERSION.SDK) >= 8) {
-            setDisplayOrientation(camera,90);
+            setDisplayOrientation(camera,ORIENTATIONS.get(rotation));
         } else {
-            parameters.setRotation(90);
+            parameters.setRotation(ORIENTATIONS.get(rotation));
         }
 
     }

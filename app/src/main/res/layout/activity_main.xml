@@ -41,4 +41,12 @@
         android:text="@string/buttontext5"
         android:padding="10dp"
         />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttontext6"
+        android:padding="10dp"
+        />
 </LinearLayout>
